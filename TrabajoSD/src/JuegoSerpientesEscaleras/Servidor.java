@@ -17,13 +17,10 @@ public class Servidor {
 		try {
 			ExecutorService pool = Executors.newCachedThreadPool();
 			ss = new ServerSocket(8000);
-			ArrayList<Cliente> cliente = new ArrayList<Cliente>();
 			while(true) {
 				Socket s = ss.accept();
-				ManejadorJugadores mj = new ManejadorJugadores(s);
-				pool.execute(mj);
-				
-						
+				ManejadorJugadores2 mj = new ManejadorJugadores2(s);
+				pool.execute(mj);			
 			}
 			
 		}catch(IOException ex) {

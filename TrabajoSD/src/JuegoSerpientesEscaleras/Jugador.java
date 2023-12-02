@@ -7,15 +7,20 @@ import java.net.UnknownHostException;
 
 public class Jugador implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int posicion;
 	private String nombre;
-	private int numTurno;
+	private int puerto;
+	private int turno;
 	
-	public Jugador(String n, int t) {
+	public Jugador(String n,int p) {
 		
 		this.posicion =0;
 		this.nombre= n;
-		this.numTurno = t;
+		this.puerto =p;
 	}
 	public void setPosicion(int p) {
 		this.posicion=p;
@@ -28,6 +33,15 @@ public class Jugador implements Serializable{
 	}
 	public void setNombre(String nombre) {
 		this.nombre=nombre;
+	}
+	public int getPort() {
+		return this.puerto;
+	}
+	public void setTurno(int turno) {
+		this.turno=turno;
+	}
+	public int getTurno() {
+		return this.turno;
 	}
 	
 }

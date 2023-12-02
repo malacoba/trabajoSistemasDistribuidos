@@ -1,6 +1,7 @@
 package JuegoSerpientesEscaleras;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,14 +20,13 @@ public class Tablero implements Serializable{
 	
 	private boolean juegoTerminado;
 	
-	
-	
-	public Tablero(List<Jugador> jugadores) {
+	public Tablero() {
 		this.mesa = new int[tam];
 		this.serpientes=new HashMap<Integer,Integer>();
 		this.escaleras=new HashMap<Integer,Integer>();
-		this.jugadores = jugadores;
+	
 		this.juegoTerminado = false;
+		this.jugadores = new ArrayList<Jugador>();
 		
 		
 		//creación de serpientes 
@@ -98,9 +98,12 @@ public class Tablero implements Serializable{
 	public void anyadirJugador(Jugador j) {
 		this.jugadores.add(j);
 	}
+	public List<Jugador> getListaJugadores() {
+		return this.jugadores;
+	}
 	
 	public String toString() {
-		int numJugadores = this.jugadores.size()- 1;
+		int numJugadores = this.jugadores.size();
 		String s = "En la mesa hay " + numJugadores + "\r\n";
 		for(int i =0; i< numJugadores ;i++) {
 			s+= "El jugador/a " + this.jugadores.get(i).getNombre() + " está en la posicion " + this.jugadores.get(i).getPosicion() + "\r\n"; 
@@ -126,6 +129,7 @@ public class Tablero implements Serializable{
 		}
 		
 	}
+	
    
 	public boolean isJuegoTerminado() {
 		return this.juegoTerminado;

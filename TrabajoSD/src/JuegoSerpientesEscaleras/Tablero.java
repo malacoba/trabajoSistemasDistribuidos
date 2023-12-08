@@ -113,14 +113,16 @@ public class Tablero implements Serializable{
 	
 	public int setPosicion(Jugador j, int n) {
 		if(this.jugadores.contains(j)) {
-			if(j.getPosicion() + n < 100) {
-				mesa[j.getPosicion()] = mesa[j.getPosicion()+n];
-				j.setPosicion(j.getPosicion() +n);
+			int pos = j.getPosicion();
+			if(pos + n < 100) {
+				mesa[pos] = mesa[pos+n];
+				j.setPosicion(pos +n);
 				return(j.getPosicion());
 			}else if(j.getPosicion() + n ==100) {
+				this.juegoTerminado=true;
 				return(100);
 			}else {
-				mesa[j.getPosicion()] = mesa[j.getPosicion()-n];
+				mesa[pos] = mesa[100-n];
 				j.setPosicion(100-n);
 				return(j.getPosicion());
 			}
